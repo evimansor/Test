@@ -57,10 +57,15 @@ function showFirstDecisionPanel() {
 }
 
 // Setup event listeners for first decision
-function setupFirstDecisionListeners() {
-    option1.onclick = handleFirstOption1Click;
-    option2.onclick = handleFirstOption2Click;
-    option3.onclick = handleFirstOption3Click;
+function showFirstDecisionPanel() {
+    console.log("Showing first decision panel");
+    overlayer.style.display = "block";
+    setupFirstDecisionListeners();
+    
+    decisionTimeout = setTimeout(() => {
+        console.log("Timeout reached, resetting video to part 2");
+        resetVideoTo("media/part 2.mp4", 33, showFirstDecisionPanel);
+    }, 10000); 
 }
 
 // Show decision panel for second decision
@@ -168,16 +173,13 @@ function handleSecondOption3Click() {
 }
 
 // Reset video to a specific time and show decision panel
-function resetVideoTo(src, time, showDecisionPanel) {
+function resetVideoTo(src, startTime, callback) {
+    const video = document.getElementById("localVideo");
     video.src = src;
-    video.load();
-    video.addEventListener('loadeddata', function onLoadedData() {
-        video.currentTime = time;
-        video.load();
-        video.play();
-        showDecisionPanel();
-        video.removeEventListener('loadeddata', onLoadedData);
-    }, { once: true });
+    video.currentTime = startTime;
+    video.play();
+    video.onended = callback; // Call the callback function when video ends
+    console.log(`Video reset to ${src} starting at ${startTime} seconds`);
 }
 
 // Initial setup
@@ -201,3 +203,8 @@ video.addEventListener('timeupdate', function onTimeUpdate() {
         video.removeEventListener('timeupdate', onTimeUpdate);
     }
 });
+
+function setupFirstDecisionListeners() {
+    // Ensure this function is properly defined and sets up listeners correctly
+    console.log("Setting up decision listeners");
+}
