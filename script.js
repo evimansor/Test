@@ -50,7 +50,7 @@ function showFirstDecisionPanel() {
     setupFirstDecisionListeners();
     
     decisionTimeout = setTimeout(() => {
-        resetVideoTo("./media/part 2.mp4", 33, showFirstDecisionPanel);
+        resetVideoTo("media/part 2.mp4", 33, showFirstDecisionPanel);
     }, 10000); 
 }
 
@@ -95,7 +95,7 @@ function handleFirstOption1Click() {
     video.load();
     video.play();
     video.addEventListener('ended', function onEnded() {
-        resetVideoTo("./media/part 2.mp4", 33, showFirstDecisionPanel);
+        resetVideoTo("media/part 2.mp4", 33, showFirstDecisionPanel);
         video.removeEventListener('ended', onEnded);
     });
 }
@@ -181,7 +181,7 @@ function resetVideoTo(src, time, showDecisionPanel) {
 // Initial setup
 lens.addEventListener('click', function() {
     lens.style.display = "none";
-    video.src = "./media/part 2.mp4";
+    video.src = "media/part 2.mp4";
     video.load();
     video.play();
     video.addEventListener('timeupdate', function onTimeUpdate() {
