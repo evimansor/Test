@@ -50,7 +50,7 @@ function showFirstDecisionPanel() {
     setupFirstDecisionListeners();
     
     decisionTimeout = setTimeout(() => {
-        resetVideoTo("./media/Part 2.mp4", 33, showFirstDecisionPanel);
+        resetVideoTo("media/Part 2.mp4", 33, showFirstDecisionPanel);
     }, 10000); 
 }
 
