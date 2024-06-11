@@ -46,10 +46,12 @@ let decisionTimeout;
 
 // Show decision panel for first decision
 function showFirstDecisionPanel() {
+    console.log("Showing first decision panel");
     overlayer.style.display = "block";
     setupFirstDecisionListeners();
     
     decisionTimeout = setTimeout(() => {
+        console.log("Timeout reached, resetting video to part 2");
         resetVideoTo("media/part 2.mp4", 33, showFirstDecisionPanel);
     }, 10000); 
 }
